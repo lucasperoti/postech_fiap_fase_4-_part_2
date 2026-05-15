@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  sales-db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: sales_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - sales_db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  vehicle-sales:
+    build: .
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@sales-db:5432/sales_db
+      REDIS_URL: redis://redis:6379/0
+      CATALOG_SERVICE_URL: http://vehicle-catalog:8000/catalog
+    depends_on:
+      - sales-db
+      - redis
+
+volumes:
+  sales_db_data:
