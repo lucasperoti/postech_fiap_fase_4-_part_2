@@ -2,6 +2,8 @@
 
 Microsservico de vendas de veiculos para a plataforma de revenda de veiculos (SOAT Fase 4).
 
+**Repositorio:** https://github.com/lucasperoti/postech_fiap_fase_4-_part_2.git
+
 ## Tecnologias
 
 - Python 3.11
@@ -21,7 +23,7 @@ Microsservico de vendas de veiculos para a plataforma de revenda de veiculos (SO
 docker-compose up --build
 ```
 
-A API estara disponivel em `http://localhost:8001/sales`
+A API estara disponivel em `http://localhost:18081`
 
 ### Opcao 2: Localmente com Python
 
@@ -38,8 +40,8 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 ### Documentacao da API
 
-- Swagger UI: `http://localhost:8001/docs`
-- ReDoc: `http://localhost:8001/redoc`
+- Swagger UI: `http://localhost:18081/docs`
+- ReDoc: `http://localhost:18081/redoc`
 
 ## Como testar
 
